@@ -97,7 +97,7 @@ public class SHA256 {
 			
 		}
 
-		public static String sha256(byte[] messageToHash) throws UnsupportedEncodingException {
+		public String sha256(byte[] messageToHash) throws UnsupportedEncodingException {
 			// TODO Auto-generated method stub
 			String hash = "";
 			String str = "";

@@ -113,9 +113,10 @@ public class Solution{
 					break;
 				case 2:
 					System.out.println("Stosujemy funkcjê SHA 256 zaimplementowan¹:");
-					
+					SHA256 sha = new SHA256();
 					start = System.nanoTime();
-					hashedOutputByte2 = SHA256.sha256(InputBytes);
+					hashedOutputByte2 = sha.sha256(InputBytes);
+					//hashedOutputByte2 = SHA256.sha256(InputBytes);
 					stop = System.nanoTime();
 					
 					System.out.println(hashedOutputByte2);
