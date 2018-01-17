@@ -33,13 +33,9 @@ public class SHA256 {
 	/**
 	 * Predefiniowane wartoœci potrzebne do policzenia funkcji skrótu.
 	 */
-	 static long[] H = { 0x6a09e667L, 0xbb67ae85L, 0x3c6ef372L, 0xa54ff53aL, 0x510e527fL, 0x9b05688cL, 0x1f83d9abL,
-			0x5be0cd19L };	
-	/**
-	 *  Predefiniowane wartoœci tymczasowe potrzebne do policzenia funkcji skrótu.
-	 */
-	 static long[] X = { 0x6a09e667L, 0xbb67ae85L, 0x3c6ef372L, 0xa54ff53aL, 0x510e527fL, 0x9b05688cL, 0x1f83d9abL,
+	final static long[] H = { 0x6a09e667L, 0xbb67ae85L, 0x3c6ef372L, 0xa54ff53aL, 0x510e527fL, 0x9b05688cL, 0x1f83d9abL,
 			0x5be0cd19L };
+
 	/**
 	 * Metoda licz¹ca skrót SHA-256 dla przygotowanego ci¹gu.
 	 * @param buf przygotowany ci¹g
@@ -162,11 +158,8 @@ public class SHA256 {
 			hash += str;
 		}
 
-		H=null;
-		H = X.clone();
 		// System.out.println(hash);
 		return hash;
-		
 	}
 
 	/**
