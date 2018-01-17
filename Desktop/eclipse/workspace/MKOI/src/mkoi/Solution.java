@@ -94,6 +94,9 @@ public class Solution{
 			
 			System.out.println("\n1. Policz hash za pomoc¹ fcji bibliotecznej");
 			System.out.println("2. Policz hash za pomoc¹ fcji zaimplementowanej");
+			System.out.println("3. Atak brute-force - znane ziarno, nieznane dane karty");
+			System.out.println("4. Atak brute-force - znane ziarno, nieznane dane karty");
+			System.out.println("5. Koniec");
 			System.out.println("Wybierz operacjê:");
 			wybor = Integer.parseInt(sc.nextLine());
 			
@@ -124,6 +127,12 @@ public class Solution{
 
 					break;
 				case 3:
+					MessageDigest digest1 = MessageDigest.getInstance("SHA-256");
+					byte[] hashToAttack1 = digest1.digest(InputBytes);
+					BruteForce attack1 = new BruteForce(cardNumber, tmpRead[0] + tmpRead[1], seed, hashToAttack1);
+					attack1.attackBruteForce(1);
+					break;
+				case 4:
 					System.out.println("Konczymy program!");
 					flaga2=false;
 					break;
