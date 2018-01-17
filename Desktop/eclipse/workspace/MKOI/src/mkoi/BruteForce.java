@@ -4,24 +4,43 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+/**
+ * Klasa odpowiedzialna za realizacjê testu pe³nego przegl¹du, czyli ataku
+ * brute-force na token.
+ * 
+ * @author Rados³aw Skar¿ycki
+ *
+ */
 public class BruteForce {
 
+	/**
+	 * Numer karty
+	 */
 	private String cardNumber = "";
+	/**
+	 * Data wa¿noœci karty
+	 */
 	private String cardValidity = "";
+	/**
+	 * Wygenerowane ziarno
+	 */
 	private byte[] seed = null;
+	/**
+	 * Obliczony token
+	 */
 	private byte[] hashValue = null;
 
 	/**
-	 * Kontruktor ataku
+	 * Kontruktor ataku.
 	 * 
 	 * @param cardNumber
-	 *            - numer karty
+	 *            numer karty
 	 * @param cardValidity
-	 *            - data wa¿noœci karty
+	 *            data wa¿noœci karty
 	 * @param seed
-	 *            - wygenerowane ziarno
+	 *            wygenerowane ziarno
 	 * @param hashValue
-	 *            - obliczony token
+	 *            obliczony token
 	 */
 	public BruteForce(String cardNumber, String cardValidity, byte[] seed, byte[] hashValue) {
 		this.cardNumber = cardNumber;
@@ -34,9 +53,10 @@ public class BruteForce {
 	 * Metoda uruchamiaj¹ca przeprowadzenie ataku.
 	 * 
 	 * @param version
-	 *            - wersja testu do uruchomienia - ostatecznie ograniczona do
-	 *            jednego testu po wyliczeniach matematycznych czasu liczenia.
+	 *            wersja testu do uruchomienia - ostatecznie ograniczona do jednego
+	 *            testu po wyliczeniach matematycznych czasu liczenia.
 	 * @throws NoSuchAlgorithmException
+	 *             wyj¹tek dotycz¹cy braku funkcji skrótu w bibliotece
 	 */
 	public void attackBruteForce(int version) throws NoSuchAlgorithmException {
 		System.out.println("Rozpoczêcie ataku brute-force na kartê.\n");
@@ -51,6 +71,7 @@ public class BruteForce {
 	 * wa¿noœci karty to 12/22.
 	 * 
 	 * @throws NoSuchAlgorithmException
+	 *             wyj¹tek dotycz¹cy braku funkcji skrótu w bibliotece
 	 */
 	private void attack1() throws NoSuchAlgorithmException {
 		System.out.println("=============");
@@ -160,16 +181,13 @@ public class BruteForce {
 			System.out.println("Data wa¿noœci: " + foundData);
 			System.out.println("Czas liczenia: " + (stopTime - startTime));
 		}
-		// MessageDigest digest = MessageDigest.getInstance("SHA-256");
-		// byte[] hash = digest.digest(InputBytes);
-		// Solution.wyswietlWHex(hash);
 	}
 
 	/**
 	 * Metoda przygotowuj¹ca znany fragment numeru karty.
 	 * 
 	 * @param inputBytes
-	 *            - ci¹g bajtów podawany do funkcji hashuj¹cej
+	 *            ci¹g bajtów podawany do funkcji hashuj¹cej
 	 */
 	private void prepareCardNumber(byte[] inputBytes) {
 		byte[] number = cardNumber.getBytes();
@@ -188,10 +206,10 @@ public class BruteForce {
 	}
 
 	/**
-	 * Metoda kopiuj¹ca seed
+	 * Metoda kopiuj¹ca seed.
 	 * 
 	 * @param inputBytes
-	 *            - ci¹g bajtów podawany do funkcji hashuj¹cej
+	 *            ci¹g bajtów podawany do funkcji hashuj¹cej
 	 */
 	private void prepareSeed(byte[] inputBytes) {
 		for (int i = 20; i < 52; i++) {
